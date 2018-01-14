@@ -6,7 +6,7 @@ object PrimeFactorCalculator {
         val primeFactors = mutableListOf<Int>()
         while (numerator != 1) {
             if (numerator % divisor == 0) {
-                numerator = numerator / divisor
+                numerator /= divisor
                 primeFactors.add(divisor)
             } else {
                 divisor++
@@ -16,7 +16,17 @@ object PrimeFactorCalculator {
     }
 
     fun primeFactors(long: Long): List<Long> {
-        // TODO
-        return listOf<Long>()
+        var divisor = 2L
+        var numerator = long
+        val primeFactors = mutableListOf<Long>()
+        while (numerator != 1L) {
+            if (numerator % divisor == 0L) {
+                numerator /= divisor
+                primeFactors.add(divisor)
+            } else {
+                divisor++
+            }
+        }
+        return primeFactors
     }
 }
