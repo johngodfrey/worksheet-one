@@ -15,25 +15,39 @@ class Deque<T> {
                 }
             }
             val newNode = Element(value)
-            println("Setting lastnode next to new node")
             lastNode?.next = newNode
             newNode.prev = lastNode
         }
-        println(this.head.toString())
     }
 
     fun pop(): T? {
-        // TODO
-        return shift()
+        if (head == null) {
+            return null
+        } else {
+            var foundEnd = false
+            var lastNode = head
+            while (!foundEnd) {
+                if (lastNode?.next == null) {
+                    foundEnd = true
+                } else {
+                    lastNode = lastNode?.next
+                }
+            }
+            lastNode?.prev?.next = null
+            return lastNode?.value
+        }
     }
 
     fun unshift(value: T) {
-        // TODO
+        val newNode = Element(value)
+        newNode.next = head
+        head?.prev = newNode
+        head = newNode
     }
 
     fun shift(): T? {
         val value = head?.value
-        // TODO
+        head = head?.next
         return value
     }
 
