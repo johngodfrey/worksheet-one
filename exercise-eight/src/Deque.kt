@@ -5,15 +5,7 @@ class Deque<T> {
         if (head == null) {
             head = Element(value)
         } else {
-            var foundEnd = false
-            var lastNode = head
-            while (!foundEnd) {
-                if (lastNode?.next == null) {
-                    foundEnd = true
-                } else {
-                    lastNode = lastNode?.next
-                }
-            }
+            val lastNode = getLastElement()
             val newNode = Element(value)
             lastNode?.next = newNode
             newNode.prev = lastNode
@@ -24,18 +16,23 @@ class Deque<T> {
         if (head == null) {
             return null
         } else {
-            var foundEnd = false
-            var lastNode = head
-            while (!foundEnd) {
-                if (lastNode?.next == null) {
-                    foundEnd = true
-                } else {
-                    lastNode = lastNode?.next
-                }
-            }
+            val lastNode = getLastElement()
             lastNode?.prev?.next = null
             return lastNode?.value
         }
+    }
+
+    private fun getLastElement(): Element<T>? {
+        var foundEnd = false
+        var lastNode = head
+        while (!foundEnd) {
+            if (lastNode?.next == null) {
+                foundEnd = true
+            } else {
+                lastNode = lastNode.next
+            }
+        }
+        return lastNode
     }
 
     fun unshift(value: T) {
