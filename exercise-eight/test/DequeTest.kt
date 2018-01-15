@@ -21,6 +21,17 @@ class DequeTest {
     }
 
     @Test
+    fun push() {
+        subject.push(10)
+        subject.push(20)
+    }
+
+    @Test
+    fun pushOne() {
+        subject.push(1)
+    }
+
+    @Test
     fun pushShift() {
         subject.push(10)
         subject.push(20)
